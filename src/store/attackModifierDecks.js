@@ -1,3 +1,5 @@
+import * as _ from "lodash";
+
 import {shuffle} from "../lib/cards";
 import {newPerksUsage, perksForClass} from "../lib/classes";
 import {END_ACTIONS, BASE_DECK, BASE_CARDS, CURSE, BLESS, needsShuffle} from "../lib/cards";
@@ -35,7 +37,18 @@ function newDeckWithPerks(characterClass, perkUsage, minusOneCards) {
             }
         });
     });
-    cards = cards.concat(new Array(minusOneCards).fill(BASE_CARDS.MINUS_ONE));
+    if (minusOneCards < 0) {
+	let removedCount = 0;
+        cards = cards.filter((c) => {
+            const keep = removedCount >= 0 - minusOneCards || !_.isEqual(c, BASE_CARDS.MINUS_ONE);
+            if (!keep) {
+                removedCount++;
+            }
+            return keep;
+        });
+    } else {
+        cards = cards.concat(new Array(minusOneCards).fill(BASE_CARDS.MINUS_ONE));
+    }
     return newDeck(cards);
 }
 

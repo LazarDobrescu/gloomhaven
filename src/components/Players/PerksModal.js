@@ -87,8 +87,8 @@ class PerksModalComponent extends React.Component {
                     <img className="PerksModal--ItemIcon" src={minusOneItemIcon} alt="-1"/>
                     x
                     <select className="PerksModal--MinusOne--Select" value={this.state.minusOneCards} onChange={(event) => this.setMinusOneCards(parseInt(event.target.value, 10))}>
-                        {new Array(6).fill().map((_, i) => {
-                            return <option key={i} value={i}>{i}</option>
+                        {new Array(8).fill().map((_, i) => {
+                            return <option key={i-2} value={i-2}>{i-2}</option>
                         })}
                     </select>
                 </div>
