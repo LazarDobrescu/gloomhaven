@@ -1,6 +1,4 @@
-https://j13huang.github.io/gloomhaven
-
-All contributions welcome!
+https://lazardobrescu.github.io/gloomhaven
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
